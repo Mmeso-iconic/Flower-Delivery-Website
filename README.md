@@ -34,8 +34,7 @@ View the live API on in different forms:
 
 ## 🎥 Loom Walkthrough
 
-- [loom](/)
-
+- [Loom video](https://www.loom.com/share/e1d19bddf3e842119ceed8930fd4eed8?sid=ea8a7d2d-02d8-4d52-a072-03bdf816fc06)
 
 ---
 
