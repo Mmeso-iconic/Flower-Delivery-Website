@@ -76,3 +76,10 @@ All endpoints are prefixed with:
   "email": "test@example.com",
   "password": "123456"
 }
+
+## 📄 License
+This project is for educational use only.  
+Feel free to customize and build upon it, but commercial redistribution is not permitted without permission.
+
+## 👩‍💻 Author
+Mmesoma Ugwuanyi
