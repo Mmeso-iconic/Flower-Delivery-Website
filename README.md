@@ -29,10 +29,8 @@ Built following modern best practices: component-based structure, environment va
 
 ## 🔗 Live Demo
 
-View the live API on in different forms:
-> `(https://flower-delivery-website-backend-afo4.onrender.com/)` → shows “Flower API is running!”  
-> `((https://flower-delivery-website-backend-afo4.onrender.com/api/flowers))` → returns all flowers grouped by category
-
+**Backend API is live:**  
+🌱 [https://flower-delivery-website-backend-afo4.onrender.com](https://flower-delivery-website-backend-afo4.onrender.com)
 ---
 
 ## 🎥 Loom Walkthrough
