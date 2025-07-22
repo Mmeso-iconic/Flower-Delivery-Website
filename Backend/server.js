@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config(); 
 const flowerRoutes = require('./routes/flowerRoutes');
+const userRoutes = require('./routes/userRoutes');
+
+
 
 
 const app = express();
@@ -11,6 +14,7 @@ const app = express();
 app.use(cors());        
 app.use(express.json());   
 app.use('/api/flowers', flowerRoutes);
+app.use('/api/users', userRoutes);
 
 
 
