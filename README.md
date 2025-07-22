@@ -1,26 +1,29 @@
-# 🌸 Flower Delivery Website – Backend
+# 🌸 Flower Delivery Website - Backend API
 
-This is the **backend API** for a modern flower delivery service. Built with **Node.js**, **Express.js**, and **MongoDB**, it manages product data, image uploads, and category filtering. Designed to work seamlessly with a React frontend (or any client) via a clean RESTful API.
+This is the backend API for a flower delivery website, built with **Node.js**, **Express**, **MongoDB**, and **JWT** authentication.  
+It includes secure user signup and login, password hashing with **bcrypt**, and JWT-based token generation.  
+Deployed live on Render and tested with Postman.
 
 ---
 
 ## 📚 Table of Contents
-
-- [Introduction](#-introduction)  
-- [Live Demo](#-live-demo)  
-- [Loom Walkthroughs](#-loom-walkthroughs)  
-- [Features](#-features)  
-- [Technologies Used](#-technologies-used)  
-- [Usage](#-usage)  
-- [License](#-license)  
-- [Author](#-author)
+- [Introduction](#introduction)
+- [Live Demo](#live-demo)
+- [Loom Walkthrough](#loom-video)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [API Endpoints](#api-endpoints)
+- [Setup & Usage](#setup--usage)
+- [License](#license)
+- [Author](#author)
 
 ---
 
 ## 📌 Introduction
 
-This backend powers a **flower delivery platform** with five categories: Fresh Flowers, Dried Flowers, Live Plants, Aroma Candles, and Fresheners.  
-It supports secure CRUD operations, image uploads using **Multer**, and data storage with **MongoDB**. The modular structure follows best practices for clarity and scalability.
+This backend API powers a responsive flower delivery website.  
+It handles user authentication, securely stores user data, and provides endpoints for the frontend.  
+Built following modern best practices: component-based structure, environment variables, and clear RESTful routing.
 
 ---
 
@@ -37,53 +40,41 @@ View the live API on in different forms:
 - [Loom video](https://www.loom.com/share/e1d19bddf3e842119ceed8930fd4eed8?sid=ea8a7d2d-02d8-4d52-a072-03bdf816fc06)
 
 ---
-
 ## ✨ Features
 
-- RESTful API built with Express.js
-- Five flower/product categories:
-  - Fresh Flowers
-  - Dried Flowers
-  - Live Plants
-  - Aroma Candles
-  - Fresheners
-- Image uploads using Multer
-- CRUD (Create, Read, Update, Delete) operations
-- Grouped results by category
-- Modular controller and route structure
-- Connected to MongoDB Atlas for cloud data storage
+- Secure user signup with hashed passwords
+- User login with JWT authentication
+- MongoDB schema supporting Google OAuth (future)
+- Separate cart data per user
+- Clean MVC folder structure
+- Tested and documented with Postman
 
 ---
 
 ## 🛠 Technologies Used
 
-- **Node.js** – JavaScript runtime
-- **Express.js** – Backend framework
-- **MongoDB & Mongoose** – Database and ODM
-- **Multer** – Middleware for handling file uploads
-- **Dotenv** – Manage environment variables
+- **Node.js** & **Express.js** – RESTful API server
+- **MongoDB** & **Mongoose** – Database & ORM
+- **bcrypt** – Password hashing
+- **jsonwebtoken** – JWT token generation
+- **dotenv** – Environment variable management
 - **Postman** – API testing
-- **Render** – Deployment
 
 ---
 
-## 🚀 Usage
+## 📌 API Endpoints
 
-1. Clone the repository
-2. Run `npm install` to install dependencies
-3. Create a `.env` file with your MongoDB URI and PORT
-4. Run `npm start` to start the server
-5. Use Postman to test CRUD endpoints or connect your frontend
+All endpoints are prefixed with:  
+`https://flower-delivery-website-backend-afo4.onrender.com/api/users`
 
----
+| Method | Endpoint      | Description       |
+|-------|---------------|------------------|
+| POST  | `/signup`     | Create a new user account |
+| POST  | `/login`      | Log in an existing user and get JWT |
 
-## 📄 License
-
-This project is intended for personal and educational use only.  
-You are free to customize and build upon it, but commercial redistribution is not permitted without permission.
-
----
-
-## 👩‍💻 Author
-
-Mmesoma Ugwuanyi
+```json
+{
+  "name": "Test User",
+  "email": "test@example.com",
+  "password": "123456"
+}
