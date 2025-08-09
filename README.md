@@ -35,7 +35,7 @@ Built following modern best practices: component-based structure, environment va
 
 ## 🎥 Loom Walkthrough
 
-- [Loom video](https://www.loom.com/share/e1d19bddf3e842119ceed8930fd4eed8?sid=ea8a7d2d-02d8-4d52-a072-03bdf816fc06)
+- [Loom video](https://www.loom.com/share/d3909fc1831d499f9eb8f612f43873c3?sid=1204191f-c7e1-41d3-ad3c-7ca39a48ac97)
 
 ---
 ## ✨ Features
