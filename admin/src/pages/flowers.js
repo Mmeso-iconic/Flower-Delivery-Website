@@ -30,6 +30,27 @@ function Flowers() {
       });
   }, []);
 
+    const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this flower?")) return;
+
+    try {
+      const res = await fetch(`${API_URL}/${id}`, {
+        method: "DELETE",
+      });
+
+      if (res.ok) {
+        setFlowers(flowers.filter((flower) => flower._id !== id));
+        alert("Flower deleted successfully!");
+      } else {
+        alert("Failed to delete flower!");
+      }
+    } catch (err) {
+      console.error("Error deleting flower:", err);
+      alert("Error deleting flower!");
+    }
+  };
+
+
   if (loading) return <p>Loading flowers...</p>;
   if (!flowers.length) return <p>No flowers found.</p>;
 
@@ -43,11 +64,22 @@ function Flowers() {
             <div className="flower-card" key={index}>
               <div className="flower-image">
                 {flower.image ? (
-                  <img src={flower.image} alt={flower.name} />
+                  <>
+                    <img src={flower.image} alt={flower.name} />
+                     <button
+                      className="delete-icon"
+                      onClick={() => handleDelete(flower._id)}
+                    >
+                      ❌
+                    </button>
+                  </>
                 ) : (
                   <span>Flower Image {index + 1}</span>
                 )}
               </div>
+
+
+
               <div className="flower-details">
                 <p><strong>Name:</strong> {flower.name}</p>
                 <p><strong>Category:</strong> {flower.category}</p>
@@ -55,6 +87,9 @@ function Flowers() {
                 <p>
                   <strong>Description:</strong> {flower.description || "No description"}
                 </p>
+                <button className="delete-btn" onClick={() => handleDelete(flower._id)}>
+                  Delete
+                </button>
               </div>
             </div>
           ))}
