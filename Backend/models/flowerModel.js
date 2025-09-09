@@ -5,10 +5,7 @@ const flowerSchema = new mongoose.Schema({
     name: String,
     description: String,
     price: Number,
-    category: {
-        type: String,
-        enum: ['Fresh Flowers', 'Dried Flowers', 'Live Plants', 'Aroma Candles', 'Fresheners']
-    },
+    category: { type: String, required: true },
     image: String
 });
 
