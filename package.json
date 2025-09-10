@@ -6,6 +6,6 @@
     "build": "npm run build-admin && npm run build-backend",
     "build-admin": "cd admin && npm install && npm run build && mkdir -p ../backend/public && cp -r build/* ../backend/public",
     "build-backend": "cd backend && npm install",
-    "start": "cd backend && npm start"
+    "start": "cd backend && node server.js"
   }
 }
