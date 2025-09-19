@@ -18,6 +18,15 @@ app.use('/images', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/flowers', flowerRoutes);
 app.use('/api/users', userRoutes);
 
+// Serve React static files
+app.use(express.static(path.join(__dirname, "public")));
+
+// Catch-all for React Router
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+
 
 
 mongoose.connect(process.env.MONGODB_URI)
