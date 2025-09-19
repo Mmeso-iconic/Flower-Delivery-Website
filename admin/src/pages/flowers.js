@@ -6,7 +6,8 @@ function Flowers() {
   const [flowers, setFlowers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const API_URL = "http://localhost:3000/api/flowers";
+  const API_URL = "/api/flowers";
+
 
   useEffect(() => {
     fetch(API_URL)
@@ -16,9 +17,7 @@ function Flowers() {
 
         const flowersWithFullImages = combinedFlowers.map((flower) => ({
           ...flower,
-          image: flower.image
-            ? `http://localhost:3000/images/${flower.image}`
-            : null,
+          image: flower.image ? `/images/${flower.image}` : null,
         }));
 
         setFlowers(flowersWithFullImages);
