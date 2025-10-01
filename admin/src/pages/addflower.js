@@ -32,7 +32,7 @@ const AddFlowers = () => {
       });
 
       // Make request to backend
-      const res = await axios.post("http://localhost:3001/api/flowers", data, {
+      const res = await axios.post("/api/flowers", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
