@@ -8,3 +8,12 @@ export const getFlowers = () => axios.get(API_URL);
 
 // export the base for images
 export const IMAGE_BASE_URL = `${BASE_URL}/images`;
+
+export const addToCart = (payload) => {
+  return axios.post(`${BASE_URL}/api/cart`, payload);
+};
+
+export const getCartItems = async () => {
+  const response = await axios.get(`${BASE_URL}/api/cart`);
+  return response;
+};

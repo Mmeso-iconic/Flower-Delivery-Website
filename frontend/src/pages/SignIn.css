@@ -1,0 +1,165 @@
+.signin-container{
+    width: 100%;
+    background-color: #fff;
+    overflow-x: hidden;
+    border-left: 1px #121212 solid;
+    border-right: 1px #121212 solid;
+    padding: var(--space-xxl) var(--space-sm);
+}
+
+.signintext{
+    font-family: 'Gilroy',sans-serif;
+    font-weight: 600;
+    font-style: Semibold;
+    font-size: var(--font-xll);
+    line-height: 120%;
+}
+
+.signin-para{
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: var(--font-xs);
+    line-height: 100%;
+}
+
+.or-div{
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    margin: var(--space-sm) 0;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.or-text {
+  font-weight: bold;
+  color: #555;
+  font-family: 'Gilroy', sans-serif;
+  font-family: Gilroy;
+  font-weight: 400;
+  font-size: var(--font-xxs);
+  line-height: 120%;
+}
+
+.authenticate{
+    display: flex;
+    flex-direction: column;
+    gap:  var(--space-sm);
+    
+}
+
+.auth-button{
+    border: #121212 1px solid;
+    padding: var(--space-sm) var(--space-xl) ;
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xs);
+}
+
+.auth-button span{
+    text-decoration: none;
+}
+
+
+.About-minititles{
+  font-family: 'Gilroy', sans-serif;
+  font-weight: 500;
+  font-size: var(font-xxxs);
+  line-height: 120%;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  color: #121212;
+  text-decoration: none;
+}
+
+.close-button{
+  display: none;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.2s;
+}
+
+.button-icon{
+    width: 24px;
+    height: 24px;
+}
+
+.bottom-signin{
+    font-family: 'Gilroy', sans-serif;
+    padding-top: var(--space-xxl);
+    text-align: center;
+}
+
+.bottom-signin p{
+    justify-content: center;
+    text-decoration: underline #121212 solid 1px;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: var(--font-xxs);
+    line-height: 120%;
+}
+
+@media (min-width:593px) {
+    .signin-container{
+        padding: var(--space-xxl);
+    }
+
+    .signintext{
+        font-size: 50px;
+    }
+
+    .authenticate{
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .auth-button{
+        padding: var(--space-sm) 31px ;
+    }
+}
+
+@media (min-width:751px) {
+    .overlaypop{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.4); /* semi-transparent */
+        backdrop-filter: blur(5px); /* blur the background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+        padding: 20px; /* for small screens */
+        overflow: auto;
+    }
+
+    .signin-container{
+        max-width: 650px; /* prevent too wide */
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95); 
+        padding: var(--space-xxl) var(--space-sm);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        overflow-x: hidden;
+        border-left: 1px #121212E5 solid;
+        border-right: 1px #121212E5 solid;
+}
+
+  .close-button {
+    display: block;
+  }
+}

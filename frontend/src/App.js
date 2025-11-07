@@ -2,14 +2,14 @@ import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages/Home';
-import Shop from './pages/Shop';
-import Contact from './pages/Contact';
+import About from './pages/about';
 import SignIn from './pages/SignIn';
-import Cart from './pages/Cart';
+import Cart from './pages/cart';
 import Footer from './components/footer';
 import Navbar from './components/navbar';
 import Category from './pages/category';
 import Product from './pages/product';
+import Subscription from './pages/subscription';
 
 
 function App() {
@@ -19,12 +19,16 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/cart" element={<Cart/>} />
+           <Route path="/sign-in" element={<SignIn />} />
           {/* <Route path="/Shop" element={<Shop />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/Cart" element={<Cart/>} />Mobile/Tablet: Icons */}
+         
+          Mobile/Tablet: Icons */}
           <Route path="/category/:categoryName" element={<Category />} />
           <Route path="/product/:id" element={<Product />} />
+          <Route path="/subscription" element={< Subscription/>}/>
+          
         </Routes>
         <Footer />
       </Router>
