@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_API_URL_BASE || "https://flower-delivery-website-backend-afo4.onrender.com";
+export const BASE_URL = process.env.REACT_APP_API_URL_BASE || "https://flower-delivery-website-backend-afo4.onrender.com"; // <-- export added
 
 const API_URL = `${BASE_URL}/api/flowers`;
 
