@@ -1,0 +1,152 @@
+.Category-Container{
+    display: flex;
+    flex-direction: column;
+}
+
+.cat-herosection{
+    position: relative;
+    background: 
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url('../assets/CatHeroImage.WEBP') center/cover no-repeat;
+    border-bottom: #121212 1px solid;
+    border-left: #121212 1px solid;
+    border-right: #121212 1px solid;
+    padding: var(--space-xxxxl) var(--space-sm);
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+
+}
+
+.cat-title{
+    font-family: 'Gilroy';
+    font-weight: 600;
+    font-size: var(--font-xxl);
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.cat-productssection{
+    display: grid;
+    grid-template-columns: 1fr; 
+    position: relative;
+
+
+}
+
+.catdiv-product {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.productpage-link{
+    display: block;
+    position: relative;
+    border-bottom: 1px solid #121212;
+    text-decoration: none;
+    border-bottom: #121212 1px solid;
+    width: 100%;
+    height: 100%;
+
+}
+
+.productpage-link img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.cat-productoverlay{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center; 
+
+}
+
+
+.cat-productname{
+    margin-bottom: var(--space-xxs);
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: var(--font-xs);
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #121212;
+    padding: 0px ;
+}
+
+.cat-productprice{
+    margin-top: var(--space-xxs);
+    font-family: 'Gilroy', sans-serif;
+    font-size: var(--font-xxs) ;
+    font-weight: 500;
+    text-align: center;
+    justify-content: center;
+    color: #808080;
+}
+
+@media (min-width: 768px) {
+  .cat-productssection {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .catdiv-product:nth-child(odd) {
+    border-right: #121212 1px solid;
+  }
+}
+
+@media (min-width: 1024px) {
+.Category-Container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .cat-herosection {
+    flex: 1 50%;
+  }
+
+  .cat-productssection {
+    display: grid;
+     grid-template-columns: repeat(2, 1fr);
+    flex: 1 50%;
+    height: auto;
+  }
+
+  .catdiv-product:nth-child(odd) {
+    border-left: #121212 1px solid;
+  }
+  .cat-herosection{
+    border-right: none;
+  }
+
+  .cat-productname{
+    margin-bottom: -0.25rem;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 1.19vw;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #121212;
+    padding: 0px ;
+}
+
+.cat-productprice{
+        font-family: 'Gilroy', sans-serif;
+    font-size: .98vw;
+    font-weight: 500;
+    text-align: center;
+    justify-content: center;
+    color: #808080;
+}
+}

@@ -1,0 +1,242 @@
+.product-intro{
+    display: flex;
+    flex-direction: column;
+}
+
+.productheroimg{
+    width: 100%;
+    height: auto;
+}
+
+.productheroimg img{
+    width: 100%;       /* image will grow and shrink with parent */     /* keeps the aspect ratio */
+    object-fit: cover;
+}
+
+.product-info{
+    border-top: #121212 1px solid;
+    border-bottom: #121212 1px solid;
+    padding: var(--space-lg) var(--space-sm);
+}
+.productpage-title{
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 600;
+    font-size: var(--font-lg);
+    line-height: 120%;
+    text-align: left;
+}
+
+.productpage-description{
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 400;
+    font-size: var(--font-xxs);
+    line-height: 120%;
+    color: #121212;
+}
+
+.productpage-quantity {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: 'Gilroy', sans-serif;
+}
+
+.productpage-quantity label{
+    font-weight: 500;
+    font-style: Medium;
+    font-size: var(--font-sm);
+    line-height: 140%;
+    padding-top: var(--space-ssm);
+    padding-bottom: var(--space-xs);
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #121212;
+    width: 100%;
+    max-width: 343px; /* Keeps design constraint */
+    margin: 0 auto; 
+}
+
+.qty-btn {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn1{
+    border-right: #121212 1px solid;
+}
+
+.btn2{
+    border-left: #121212 1px solid;    
+}
+
+.qty-btn:hover {
+    background: #f2f2f2;
+}
+
+.quantity-controls input {
+    flex: 1; 
+    width: 225px;         /* wider on small screens */
+    text-align: center;
+    border: none;
+    outline: none;
+    font-size: var(--font-xs);
+}
+.productpage-addtocart{
+    margin:var(--space-lg) var(--space-xxs) ;
+
+}
+
+
+.addto-btn{
+    display: block;
+    width: 100%;
+    background-color: #121212;
+    color: white;
+    font-family: "Gilroy", sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: var(--font-xxxs);
+    padding: var(--space-sm) 0px; /* 8px 16px */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+}
+.may-alsolike{
+    border-bottom: #121212 1px solid;
+}
+
+.may-alsolike h3{
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: var(--font-lg);
+    line-height: 120%;
+    text-align: center;
+}
+
+.mayalsolike-products{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.mayalsolike-product{
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-bottom: #121212 1px solid;
+}
+
+.morelike-img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.product-overlay{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center; 
+}
+
+
+.morelike-name{
+    margin-bottom: var(--space-xxs);
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: var(--font-xs);
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #121212;
+    padding: 0px ;   
+}
+
+.morelike-price{
+    margin-top: var(--space-xxs);
+    font-family: 'Gilroy', sans-serif;
+    font-size: var(--font-xxs) ;
+    font-weight: 500;
+    text-align: center;
+    justify-content: center;
+    color: #808080;
+}
+
+
+@media (min-width: 593px) {
+    .productpage-quantity{
+        flex-direction: row;    
+        gap: 2px;
+    }
+
+    .quantity-controls{
+        margin: 0 30px;
+    }
+
+    .quantity-controls input {
+        width: 50px;
+  }
+
+    .addto-btn {
+    font-size: 14px;
+    padding: var(--space-md) var(--space-md); /* 12px 24px */
+  }
+
+  .mayalsolike-products{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.mayalsolike-product:nth-child(odd){
+    border-right: #121212 1px solid;
+}
+
+}
+
+@media (min-width: 1024px) {
+
+.product-intro{
+        flex-direction: row;
+    }
+
+.productheroimg{
+        flex: 1 50%;
+        border-right: #121212 1px solid;
+        border-bottom: #121212 1px solid;
+    }
+
+.product-info{
+        flex: 1 50%;
+    }
+
+
+.quantity-controls input {
+    width: 30px;
+  }
+
+.mayalsolike-products{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.mayalsolike-product:nth-child(2){
+    border-right: #121212 1px solid;
+}
+
+}

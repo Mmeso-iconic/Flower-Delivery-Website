@@ -1,13 +1,176 @@
+/* ---------------------------
+   GLOBAL RESETS & BASE
+----------------------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px; /* Mobile base */
+}
+
+@font-face {
+  font-family: 'Zapfino', ;
+  src: url('./assets/fonts/zapfino/Zapfino.woff2')  format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media (min-width: 593px) and (max-width: 1023px) {
+  html {
+    font-size: 16px; /* Tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 18px; /* Desktop */
+  }
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: 'Gilroy','Zapfino' -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #121212;
+  background-color: #fff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+
+/* ---------------------------
+   ROOT VARIABLES
+----------------------------*/
+:root {
+  /* SPACING SCALE */
+  --space-xxs: 0.25rem; /* 4px */
+  --space-xs: 0.5rem;   /* 8px */
+  --space-ssm: 0.75rem;     /* 12px */
+  --space-sm: 1rem;     /* 16px */
+  --space-md: 1.5rem;   /* 24px */
+  --space-lg: 2.5rem;   /* 40px */
+  --space-xl: 4rem;     /* 64px */
+  --space-xxl: 6rem;    /* 96px */
+  --space-xxxl: 7.5rem;   /* 120px */  
+  --space-xxxxl: 9.5rem;   /* 152px */ 
+
+
+  /* TYPOGRAPHY SCALE (responsive with html font-size) */
+  --font-xxxs:0.7rem; /*12px*/
+  --font-xxs: 0.875rem; /* 14px */
+  --font-xs: 1rem;      /* 16px */
+  --font-sm: 1.25rem;   /* 20px */
+  --font-md: 1.5rem;    /* 24px */
+  --font-lg: 1.75rem;   /* 28px */
+  --font-xl: 2rem;      /* 32px */
+  --font-xll: 2.125rem;      /* 34px */
+  --font-xxl: 2.5rem;   /* 40px */
+  --font-xxxl: 3.5rem;   /* 62px */
+}
+
+/* ---------------------------
+   CONTAINER SYSTEM
+----------------------------*/
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+  box-sizing: border-box;
+}
+
+.About-minititle{
+  font-family: 'Gilroy', sans-serif;
+  font-weight: 600;
+  font-size: var(font-xxxs);
+  line-height: 120%;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  color: #121212;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    padding: 0 var(--space-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1200px;
+    padding: 0 var(--space-lg);
+  }
+}
+
+
+/* ---------------------------
+   PAGE WRAPPER SYSTEM
+----------------------------*/
+.page-container {
+  width: 100%;
+  background-color: #fff;
+  overflow-x: hidden;
+  border-left: 1px #121212 solid;
+  border-right: 1px #121212 solid;
+}
+
+
+.wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: var(--space-sm);
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .wrapper {
+    padding-inline: var(--space-md);
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .wrapper {
+    padding-inline: var(--space-lg);
+  }
+}
+
+/* ---------------------------
+   BUTTON STYLES
+----------------------------*/
+.btn {
+  width: 100%;
+  max-width: 343px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: var( --space-ssm) var(--space-md);
+  border: none;
+  background-color: #121212;
+  color: #fff;
+  font-family: 'Gilroy', sans-serif;
+  font-weight: 500;
+  font-size: var(--font-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #333;
+}
+
+.footer-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
