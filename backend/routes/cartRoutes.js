@@ -1,6 +1,6 @@
 const express = require('express');
 const { protect } = require('../middlewares/protect');
-const Cart = require('../models/Cart');
+const Cart = require('../models/cartModel');
 
 const router = express.Router();
 
