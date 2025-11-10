@@ -1,21 +1,24 @@
 import "./cart.css";
 import { useEffect, useState } from "react";
-import { getCartItems } from "../api"; // optional: replace with your actual API
+import { getCartItems } from "../api"; // replace with your actual API
 import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Example: Replace with your real fetchCart function
-    getCartItems()
-      .then((res) => setCartItems(res.data || []))
-      .catch((err) => console.error("Error fetching cart:", err));
-  }, []);
+useEffect(() => {
+  getCartItems()
+    .then((res) => {
+      console.log("Cart API response:", res.data); // <-- check this
+      setCartItems(Array.isArray(res.data) ? res.data : []);
+    })
+    .catch((err) => console.error("Error fetching cart:", err));
+}, []);
 
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+  // Safely calculate subtotal even if cartItems is not an array
+  const subtotal = (Array.isArray(cartItems) ? cartItems : []).reduce(
+    (sum, item) => sum + (item.price || 0) * (item.quantity || 0),
     0
   );
 
@@ -27,7 +30,7 @@ function Cart() {
     <div className="cart-container page-container">
       <h2 className="cart-title">Your Basket</h2>
 
-      {cartItems.length === 0 ? (
+      {(!Array.isArray(cartItems) || cartItems.length === 0) ? (
         <p className="empty-cart">Your basket is empty.</p>
       ) : (
         <div className="cart-content">

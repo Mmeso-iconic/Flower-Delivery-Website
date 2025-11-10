@@ -20,7 +20,7 @@
     height: 48px;
     border: 1px #121212 solid;
     border-bottom: none;
-    background-color: none;
+    background: none;
     text-decoration: none;
 }
 
@@ -28,6 +28,84 @@
 .nav-links {
     display: none; /* hidden by default, only icons show */
 }
+
+
+/*BURGER MENU*/
+.burger-menu{
+  background-color: #ffffff;
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-md);
+  border: 1px solid #121212;
+  height: 100%;
+}
+
+.close-btn{
+  position: relative;
+ background-color: transparent;
+  border: none;
+  width:  24px;
+  height: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.2s;
+  padding-left: var(--space-md); 
+ 
+}
+
+.burger-links{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  margin-bottom: 0;;
+  padding: 0;
+}
+
+.burger-links li a{
+  display: block;                /* ensures each link takes full width */
+  text-decoration: none;
+  color: #121212;
+  padding:  var(--space-md);            /* more visible clickable area */
+  font-family: 'Gilroy', sans-serif;
+  border-top: 1px solid #121212;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: Medium;
+  line-height: 120%;
+  
+}
+
+.navtext{
+   padding: var(--space-xs) var(--space-md); 
+   margin-top: 0;
+   margin-bottom: 0;
+   font-family: 'Gilroy', sans-serif;
+   font-weight: 500;
+   font-style: Medium;
+   font-size: 14px;
+   line-height: 120%;
+   letter-spacing: 2.5%;
+   color: #121212E5;
+}
+
+.navfooter{
+  border-top: 1px solid #121212;
+  flex: 1 1 100%;
+  min-width: 250px;
+  box-sizing: border-box;
+  font-family: 'Gilroy', sans-serif;
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-md);
+}
+
+.nav-socialmedia {
+  border-top: 1px solid #121212;
+  padding: var(--space-md);
+  display: flex;
+  gap: 32px;
+}
+
 
 /* =========================
    Small Devices (>=375px)
@@ -39,6 +117,31 @@
     margin: 0 auto;
   }
 }
+
+
+/* =========================
+   Desktop (>=593x)
+========================= */
+
+@media (min-width: 593px) {
+  .burger-menu-overlay{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.4); /* semi-transparent */
+        backdrop-filter: blur(5px); /* blur the background */
+        display: flex;
+        z-index: 999;
+        padding: 20px; /* for small screens */
+        overflow: auto;
+  }
+}
+
+
+
+
 
 /* =========================
    Desktop (>=1024px)

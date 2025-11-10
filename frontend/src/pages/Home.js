@@ -1,5 +1,6 @@
 import './Home.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Signin from '../components/SignIn.js';
 import { Link } from "react-router-dom";
 import FlowerHeroImage from '../assets/FlowerHeroimg.png';
 import RightArrow from '../assets/arrow-right.svg';
@@ -20,10 +21,25 @@ import Telegramicon from '../assets/Telegramicon.svg'
 import Googlelogo from '../assets/Googlelogo.svg'
 import SelectPlan from '../assets/SelectPlan.webp'
 
+
+import Navbar from "../components/navbar.js";
+
 function Home() {
+
+  const [showSignin, setShowSignin] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) setShowSignin(true); // show modal if not logged in
+  }, []);
+
+  const redirectAfterLogin = () => setShowSignin(false);
+
   return (
     <>
-    
+
+        
+       
         <div className="herosection-container">
             <div className="hero-section">
                 <div className="hero-text">       
@@ -195,6 +211,12 @@ function Home() {
             <p className="testifiers">– Ronald Richards</p>
             <button className="service-button">READ REVIEWS</button>
         </div>
+
+        <Signin
+        isOpen={showSignin}
+        onClose={() => setShowSignin(false)}
+        redirectAfterLogin={redirectAfterLogin}
+      />
     </>
   );
 }

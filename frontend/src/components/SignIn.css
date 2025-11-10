@@ -53,16 +53,46 @@
     
 }
 
-.auth-button{
-    border: #121212 1px solid;
-    padding: var(--space-sm) var(--space-xl) ;
-    display: flex;
-    justify-content: center;
-    gap: var(--space-xs);
+.auth-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid #dadce0;
+  color: #3c4043;
+  cursor: pointer;
+  font-family: "Google Sans", arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  height: 40px;
+  padding: 0 12px;
+  text-align: center;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.auth-button span{
-    text-decoration: none;
+.auth-button:hover {
+  background-color: #f7f8f8;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.auth-button:active {
+  background-color: #e8eaed;
+}
+
+.auth-button img.button-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.auth-button span {
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #3c4043;
 }
 
 
@@ -110,6 +140,51 @@
     font-size: var(--font-xxs);
     line-height: 120%;
 }
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  flex: 1;
+  padding-right: 60px; /* space for the show/hide button */
+}
+
+.emailcolor input{
+  color: #121212;
+}
+
+
+.show-password-btn {
+  position: absolute;
+  right: 12px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  font-family: 'Gilroy', sans-serif;
+  font-size: var(--font-xxs);
+  font-weight: 500;
+  color: #121212;
+  text-transform: uppercase;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (min-width:593px) {
     .signin-container{
