@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const flowerRoutes = require('./routes/flowerRoutes');
 const userRoutes = require('./routes/userRoutes');
+const cartRoutes = require('./routes/cartRoutes');
 
 const app = express();
 
@@ -32,6 +33,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
+
+app.use('/api/cart', cartRoutes);
+
 
 
 mongoose.connect(process.env.MONGODB_URI)
