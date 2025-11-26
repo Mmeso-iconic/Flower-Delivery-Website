@@ -40,6 +40,8 @@ function Product() {
   const handleAddToCart = async () => {
     const token = localStorage.getItem("token");
 
+    console.log('Add to cart clicked. Quantity:', quantity, 'Product ID:', product._id);
+
     // Guest user → localStorage
     if (!token) {
       addToGuestCart(product._id, quantity);
@@ -49,7 +51,9 @@ function Product() {
 
     // Logged-in user → backend
     try {
-      await addToCart(product._id, quantity, token);
+      console.log('Sending to backend:', { flowerId: product._id, quantity });
+      const response = await addToCart(product._id, quantity, token);
+      console.log('Backend response:', response.data);
       alert("Added to cart!");
     } catch (err) {
       console.error("Error adding to cart:", err);

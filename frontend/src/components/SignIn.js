@@ -17,15 +17,21 @@ function SignIn({ isOpen, onClose, redirectAfterLogin }) {
 
     if (guestCart.length === 0) return;
 
+    console.log('Guest cart before merge:', guestCart);
+
     try {
+      const mergePayload = {
+        items: guestCart.map((item) => ({
+          flowerId: item.flowerId || item.id || item._id,
+          quantity: item.quantity || 1,
+        })),
+      };
+
+      console.log('Sending merge request:', mergePayload);
+
       await axios.post(
         `${BASE_URL}/api/cart/merge`,
-        {
-          items: guestCart.map((item) => ({
-            flowerId: item.id || item._id,
-            quantity: item.quantity,
-          })),
-        },
+        mergePayload,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -33,8 +39,10 @@ function SignIn({ isOpen, onClose, redirectAfterLogin }) {
 
       // Clear guest cart after merging
       localStorage.removeItem("cart");
+      console.log('Cart merged and cleared');
     } catch (error) {
       console.error("Error merging cart:", error);
+      console.error("Error details:", error.response?.data);
       // Don't fail login if cart merge fails
     }
   };
