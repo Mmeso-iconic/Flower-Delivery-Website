@@ -1,7 +1,8 @@
 # 🌸 Flower Delivery Website - Backend API
 
 This is the backend API for a flower delivery website, built with **Node.js**, **Express**, **MongoDB**, and **JWT** authentication.  
-It includes secure user signup and login, password hashing with **bcrypt**, and JWT-based token generation.  
+It includes secure user signup and login, password hashing with **bcrypt**, JWT-based token generation, and full flower management (add, list, and delete flowers with image upload).  
+It also powers the **Admin Panel**, where admins can manage flowers directly from the frontend.  
 Deployed live on Render and tested with Postman.
 
 ---
@@ -22,8 +23,9 @@ Deployed live on Render and tested with Postman.
 ## 📌 Introduction
 
 This backend API powers a responsive flower delivery website.  
-It handles user authentication, securely stores user data, and provides endpoints for the frontend.  
-Built following modern best practices: component-based structure, environment variables, and clear RESTful routing.
+It handles user authentication, securely stores user data, and provides endpoints for managing flowers (create, fetch, and delete).  
+An **Admin Panel** is integrated on the frontend to allow admins to directly add or delete flowers.  
+Built following modern best practices: MVC folder structure, environment variables, and clear RESTful routing.
 
 ---
 
@@ -31,21 +33,27 @@ Built following modern best practices: component-based structure, environment va
 
 **Backend API is live:**  
 🌱 [https://flower-delivery-website-backend-afo4.onrender.com](https://flower-delivery-website-backend-afo4.onrender.com)
+
 ---
 
 ## 🎥 Loom Walkthrough
 
-- [Loom video](https://www.loom.com/share/d3909fc1831d499f9eb8f612f43873c3?sid=1204191f-c7e1-41d3-ad3c-7ca39a48ac97)
+- [Loom video](https://www.loom.com/share/3fd4dcf1f1734d94b7fdc99936121dd8?sid=76310515-3d96-4433-9a14-ff9c1d1307d2)
 
 ---
+
 ## ✨ Features
 
-- Secure user signup with hashed passwords
-- User login with JWT authentication
-- MongoDB schema supporting Google OAuth (future)
-- Separate cart data per user
-- Clean MVC folder structure
-- Tested and documented with Postman
+- 🔐 Secure user signup with hashed passwords
+- 🔑 User login with JWT authentication
+- 🛒 Separate cart data per user
+- 🌸 Add, fetch, and delete flowers with image upload (via Multer)
+- 🗂 Grouped flowers by category for easy frontend rendering
+- 🛠 Clean MVC folder structure
+- 🖥 **Admin Panel**:
+  - Add flowers with name, price, category, description, and image  
+  - Delete flowers (via button under description or ❌ on the image)
+- 📌 Tested and documented with Postman
 
 ---
 
@@ -55,6 +63,7 @@ Built following modern best practices: component-based structure, environment va
 - **MongoDB** & **Mongoose** – Database & ORM
 - **bcrypt** – Password hashing
 - **jsonwebtoken** – JWT token generation
+- **multer** – File upload handling for flower images
 - **dotenv** – Environment variable management
 - **Postman** – API testing
 
@@ -63,13 +72,15 @@ Built following modern best practices: component-based structure, environment va
 ## 📌 API Endpoints
 
 All endpoints are prefixed with:  
-`https://flower-delivery-website-backend-afo4.onrender.com/api/users`
+`https://flower-delivery-website-backend-afo4.onrender.com/api`
 
-| Method | Endpoint      | Description       |
-|-------|---------------|------------------|
-| POST  | `/signup`     | Create a new user account |
-| POST  | `/login`      | Log in an existing user and get JWT |
+### 👤 User Routes (`/users`)
+| Method | Endpoint   | Description       |
+|--------|-----------|------------------|
+| POST   | `/signup` | Create a new user account |
+| POST   | `/login`  | Log in an existing user and get JWT |
 
+Example Request:
 ```json
 {
   "name": "Test User",
