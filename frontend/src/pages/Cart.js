@@ -1,78 +1,66 @@
-import "./cart.css";
-import { useEffect, useState } from "react";
-import { getCartItems } from "../api"; // replace with your actual API
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { BASE_URL } from "../api";
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
-  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
-useEffect(() => {
-  getCartItems()
-    .then((res) => {
-      console.log("Cart API response:", res.data); // <-- check this
-      setCartItems(Array.isArray(res.data) ? res.data : []);
-    })
-    .catch((err) => console.error("Error fetching cart:", err));
-}, []);
+  const fetchCart = async () => {
+    // Logged-in user → fetch from backend
+    if (token) {
+      try {
+        const res = await axios.get(`${BASE_URL}/api/cart`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
 
-  // Safely calculate subtotal even if cartItems is not an array
-  const subtotal = (Array.isArray(cartItems) ? cartItems : []).reduce(
-    (sum, item) => sum + (item.price || 0) * (item.quantity || 0),
-    0
-  );
-
-  const handleContinue = () => {
-    navigate("/checkout");
+        setCartItems(res.data.items || []);
+      } catch (error) {
+        console.error("Error fetching cart:", error);
+        
+        // If token is invalid (401), clear it and fallback to guest cart
+        if (error.response?.status === 401) {
+          console.warn("Token invalid or expired, clearing auth and using guest cart");
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+          
+          // Fallback to guest cart
+          const guestCart = JSON.parse(localStorage.getItem("cart")) || [];
+          setCartItems(guestCart);
+        }
+      }
+    } else {
+      // Guest → localStorage
+      const guestCart = JSON.parse(localStorage.getItem("cart")) || [];
+      setCartItems(guestCart);
+    }
   };
 
+  useEffect(() => {
+    fetchCart();
+  }, [token]); // safe
+
   return (
-    <div className="cart-container page-container">
-      <h2 className="cart-title">Your Basket</h2>
+    <div className="cart-page">
+      <h1>Your Cart</h1>
 
-      {(!Array.isArray(cartItems) || cartItems.length === 0) ? (
-        <p className="empty-cart">Your basket is empty.</p>
-      ) : (
-        <div className="cart-content">
-          {cartItems.map((item) => (
-            <div key={item._id} className="cart-item">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="cart-item-image"
-              />
-              <div className="cart-item-details">
-                <p className="cart-item-name">{item.name}</p>
-                <p className="cart-item-quantity">
-                  Quantity: <span>{item.quantity}</span>
-                </p>
-              </div>
-              <p className="cart-item-price">${item.price}</p>
-            </div>
-          ))}
+      {cartItems.length === 0 && <p>Your cart is empty</p>}
 
-          <div className="cart-summary">
-            <div className="summary-row">
-              <p>Subtotal</p>
-              <p>${subtotal.toFixed(2)}</p>
-            </div>
-            <div className="summary-row">
-              <p>Shipping</p>
-              <p>Calculated at next step</p>
-            </div>
-            <div className="summary-total">
-              <p>Total</p>
-              <p>${subtotal.toFixed(2)}</p>
-            </div>
+      {cartItems.map((item) => (
+        <div className="cart-item" key={item.id || item.flower?._id}>
+          <img
+            src={item.image || item.flower?.image}
+            alt=""
+            width={80}
+            height={80}
+          />
 
-            <button className="continue-btn" onClick={handleContinue}>
-              CONTINUE TO PAYMENT
-            </button>
-
-            <p className="secure-checkout">Secure Checkout 🔒</p>
+          <div>
+            <h3>{item.name || item.flower?.name}</h3>
+            <p>Quantity: {item.quantity}</p>
           </div>
         </div>
-      )}
+      ))}
     </div>
   );
 }
