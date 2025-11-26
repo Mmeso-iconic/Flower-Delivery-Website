@@ -1,11 +1,42 @@
-const express = require('express');
-const { protect } = require('../middlewares/protect');
-const { getCart, addToCart, removeFromCart } = require('../controllers/cartController');
+const Cart = require('../models/cartModel');
 
-const router = express.Router();
+// Merge guest cart into user's cart after login
+exports.mergeCart = async (req, res) => {
+  const guestItems = req.body.items; // [{ flowerId, quantity }]
+  if (!Array.isArray(guestItems)) {
+    return res.status(400).json({ message: "Invalid cart format" });
+  }
 
-router.get('/', protect, getCart);
-router.post('/', protect, addToCart);
-router.delete('/:flowerId', protect, removeFromCart);
+  try {
+    let cart = await Cart.findOne({ user: req.user._id });
 
-module.exports = router;
+    if (!cart) {
+      cart = new Cart({ user: req.user._id, items: [] });
+    }
+
+    guestItems.forEach(guestItem => {
+      const existingItem = cart.items.find(
+        (i) => i.flower.toString() === guestItem.flowerId
+      );
+
+      if (existingItem) {
+        existingItem.quantity += guestItem.quantity;
+      } else {
+        cart.items.push({
+          flower: guestItem.flowerId,
+          quantity: guestItem.quantity
+        });
+      }
+    });
+
+    await cart.save();
+
+    res.json({
+      message: "Cart merged successfully",
+      cart
+    });
+
+  } catch (err) {
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+};

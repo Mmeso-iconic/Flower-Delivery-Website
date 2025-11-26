@@ -1,6 +1,7 @@
 const express = require('express');
 const { protect } = require('../middlewares/protect');
 const Cart = require('../models/cartModel');
+const { mergeCart } = require('../controllers/cartControllers');
 
 const router = express.Router();
 
@@ -14,6 +15,9 @@ router.get('/', protect, async (req, res) => {
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 });
+
+// POST /api/cart/merge - merge guest cart with user cart after login
+router.post('/merge', protect, mergeCart);
 
 // POST /api/cart - add flower to user's cart
 router.post('/', protect, async (req, res) => {
