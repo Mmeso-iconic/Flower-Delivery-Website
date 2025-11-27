@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL, IMAGE_BASE_URL } from "../api";
+import { useNavigate } from "react-router-dom";
 import "./cart.css";
 
-function Cart() {
+function Cart({ onRequireSignin }) {
   const [cartItems, setCartItems] = useState([]);
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const navigate = useNavigate();
 
   const fetchCart = async () => {
     const currentToken = localStorage.getItem("token");
@@ -29,7 +30,6 @@ function Cart() {
           );
           localStorage.removeItem("token");
           localStorage.removeItem("user");
-          setToken(null);
 
           // Fallback to guest cart
           const guestCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -69,6 +69,45 @@ function Cart() {
     }
   };
 
+  const handleContinueToPayment = async () => {
+    const currentToken = localStorage.getItem("token");
+    
+    if (currentToken) {
+      // Verify token is valid by trying to fetch cart
+      try {
+        await axios.get(`${BASE_URL}/api/cart`, {
+          headers: { Authorization: `Bearer ${currentToken}` },
+        });
+        
+        // Token is valid, proceed to checkout
+        navigate('/checkout');
+      } catch (error) {
+        // Token is invalid or expired
+        if (error.response?.status === 401) {
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+          
+          // Show sign-in modal
+          if (onRequireSignin) {
+            onRequireSignin();
+          } else {
+            alert('Please sign in to continue to checkout');
+          }
+        } else {
+          // Other error, proceed anyway
+          navigate('/checkout');
+        }
+      }
+    } else {
+      // User is not logged in, trigger sign-in modal
+      if (onRequireSignin) {
+        onRequireSignin();
+      } else {
+        alert('Please sign in to continue to checkout');
+      }
+    }
+  };
+
   useEffect(() => {
     fetchCart();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -81,14 +120,18 @@ function Cart() {
   }, 0);
 
   return (
-    <div className="cart-container page-container">
-      <h1 className="cart-title">Your Cart</h1>
+    <div className="cart-grid page-container">
       
-      {cartItems.length === 0 ? (
-        <p className="empty-cart">Your cart is empty</p>
-      ) : (
-        <>
-          <div className="cart-content">
+      {/* --- LEFT COLUMN: Cart Items --- */}
+      <div className="cart-items-section">
+        <h1>Your Cart</h1>
+        
+        {cartItems.length === 0 ? (
+          <div className="empty-state">
+            <p>Your cart is empty.</p>
+          </div>
+        ) : (
+          <>
             {cartItems.map((item, index) => {
               // Image Logic
               let imageSrc = "";
@@ -101,62 +144,62 @@ function Cart() {
               }
               
               const price = item.price || item.flower?.price || 0;
+              const name = item.name || item.flower?.name || 'Unknown Product';
 
               return (
                 <div className="cart-item" key={item._id || item.flower?._id || index}>
-                  {imageSrc && (
-                    <img
-                      src={imageSrc}
-                      alt={item.name || item.flower?.name}
-                    />
-                  )}
+                  <div className="cart-item-image">
+                    {imageSrc && (
+                      <img
+                        src={imageSrc}
+                        alt={name}
+                      />
+                    )}
+                  </div>
                   <div className="cart-item-details">
-                    <h3 className="cart-item-name">
-                      {item.name || item.flower?.name}
+                    <h3 className="item-name">
+                      {name}
                     </h3>
-                    <p className="cart-item-quantity">Quantity: {item.quantity}</p>
+                    <p className="item-qty">Quantity: {item.quantity}</p>
                   </div>
                   <div className="cart-item-price">${price.toFixed(2)}</div>
                 </div>
               );
             })}
-          </div>
-
-          <div className="cart-summary">
-            <div className="summary-row">
-              <span className="summary-total">Subtotal</span>
-              <span className="summary-total">${subtotal.toFixed(2)}</span>
-            </div>
-            <div className="summary-row">
-              <span>Shipping</span>
-              <span>Calculated at next step</span>
-            </div>
             
-            <div className="summary-row">
-              <span className="summary-total">Total</span>
-              <span className="summary-total">${subtotal.toFixed(2)}</span>
-            </div>
-
-            <button className="continue-btn">Continue to Payment</button>
-            
-            <button 
-              onClick={clearCart}
-              style={{
-                marginTop: '10px',
-                padding: '10px',
-                backgroundColor: '#ff4444',
-                color: 'white',
-                border: 'none',
-                borderRadius: '5px',
-                cursor: 'pointer',
-                width: '100%'
-              }}
-            >
-              Clear Cart (Test)
+            <button className="text-btn" onClick={clearCart}>
+              Clear Cart
             </button>
-          </div>
-        </>
-      )}
+          </>
+        )}
+      </div>
+
+      {/* --- RIGHT COLUMN: Summary & Checkout --- */}
+      <div className="cart-summary-section">
+        <div className="summary-row">
+          <span>Subtotal</span>
+          <span>${subtotal.toFixed(2)}</span>
+        </div>
+        <div className="summary-row">
+          <span>Shipping</span>
+          <span className="calculated-text">Calculated at next step</span>
+        </div>
+        
+        <div className="summary-divider"></div>
+
+        <div className="summary-row total">
+          <span>Total</span>
+          <span>${subtotal.toFixed(2)}</span>
+        </div>
+
+        <button className="btn checkout-btn" onClick={handleContinueToPayment}>
+          Continue to Payment
+        </button>
+
+        <div className="secure-badge">
+          <span role="img" aria-label="lock">🔒</span> Secure Checkout
+        </div>
+      </div>
     </div>
   );
 }
