@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './navbar.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ShopIcon from '../assets/Shop_icon.svg';
 import MenuIcon from '../assets/menu_icon.svg';
 import CloseIcon from '../assets/close_icon.svg'; // optional close icon
@@ -13,6 +13,21 @@ import teleicon from '../assets/Telegramicon.svg'
 // 1. Accept the onSigninClick prop from the parent AppContent component
 function Navbar({ onSignInClick }) { 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if user is logged in
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+    navigate("/");
+  };
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -35,14 +50,17 @@ function Navbar({ onSignInClick }) {
           <li><Link to="/contact" className="nav-link">Contact</Link></li>
         </ul>
         <ul className="thelinks">
-          {/* 2. Attach the onSigninClick handler to the desktop "Sign In" link */}
+          {/* 2. Show Sign In or Logout based on login state */}
           <li>
-            <Link 
-              className="nav-link"
-              onClick={onSignInClick} // 👈 This executes the navigate('/sign-in') function
-            >
-              Sign In
-            </Link>
+            {isLoggedIn ? (
+              <Link className="nav-link" onClick={handleLogout}>
+                Logout
+              </Link>
+            ) : (
+              <Link className="nav-link" onClick={onSignInClick}>
+                Sign In
+              </Link>
+            )}
           </li>
           <li><Link to="/cart" className="nav-link">Cart</Link></li>
         </ul>
@@ -60,16 +78,17 @@ function Navbar({ onSignInClick }) {
             <ul className="burger-links">
               <li><Link to="/shop" onClick={toggleMenu}>Shop</Link></li>
               <li><Link to="/contact" onClick={toggleMenu}>Contact</Link></li>
-              {/* 3. Attach onSigninClick and toggleMenu for the mobile "Sign In" link */}
+              {/* 3. Show Sign In or Logout in mobile menu */}
               <li>
-                <Link 
-                  onClick={() => {
-                    onSignInClick(); 
-                    toggleMenu(); // Also close the menu after navigation
-                  }}
-                >
-                  Sign In
-                </Link>
+                {isLoggedIn ? (
+                  <Link onClick={() => { handleLogout(); toggleMenu(); }}>
+                    Logout
+                  </Link>
+                ) : (
+                  <Link onClick={() => { onSignInClick(); toggleMenu(); }}>
+                    Sign In
+                  </Link>
+                )}
               </li>
               <li><Link to="/cart" onClick={toggleMenu}>Cart</Link></li>
             </ul>

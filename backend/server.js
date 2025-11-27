@@ -8,6 +8,7 @@ require('dotenv').config();
 const flowerRoutes = require('./routes/flowerRoutes');
 const userRoutes = require('./routes/userRoutes');
 const cartRoutes = require('./routes/cartRoutes');
+const checkoutRoutes = require('./routes/checkoutRoutes');
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use('/images', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/flowers', flowerRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api', checkoutRoutes);
 
 // Test endpoint
 app.get('/api', (req, res) => {

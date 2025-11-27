@@ -1,7 +1,6 @@
 import "./product.css";
 import { useParams } from "react-router-dom";
 import { addToCart } from "../api";
-import { addToGuestCart } from "../utils/cartUtils";
 import { useEffect, useState } from "react";
 import { getFlowers, IMAGE_BASE_URL } from "../api";
 import RattanGrapefruit from "../assets/RattanGrapefruit.webp";
@@ -42,9 +41,24 @@ function Product() {
 
     console.log('Add to cart clicked. Quantity:', quantity, 'Product ID:', product._id);
 
-    // Guest user → localStorage
+    // Guest user → localStorage with full product details
     if (!token) {
-      addToGuestCart(product._id, quantity);
+      const guestCart = JSON.parse(localStorage.getItem("cart")) || [];
+      const existingItem = guestCart.find(item => item._id === product._id);
+      
+      if (existingItem) {
+        existingItem.quantity += quantity;
+      } else {
+        guestCart.push({
+          _id: product._id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          quantity: quantity
+        });
+      }
+      
+      localStorage.setItem("cart", JSON.stringify(guestCart));
       alert("Added to cart!");
       return;
     }

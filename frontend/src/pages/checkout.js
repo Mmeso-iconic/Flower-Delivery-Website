@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./Checkout.css";
+import "./checkout.css";
+import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
@@ -7,6 +8,9 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
+
+const BASE_URL = process.env.REACT_APP_API_URL_BASE || "https://flower-delivery-website-backend-afo4.onrender.com";
+const IMAGE_BASE_URL = `${BASE_URL}/images`;
 
 const stripePromise = loadStripe("pk_test_51SXhCQAdQiN3rQ2ZCb3YLYgOHugefRq63NDcK3BoVhD8BdJTqLxYSRx9q6QeOTiWgU9THdsABoETdyQVcFJ4RMUw00O9M6uLtC");
 
@@ -28,8 +32,40 @@ const CheckoutForm = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const localCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(localCart);
+    const fetchCart = async () => {
+      const token = localStorage.getItem("token");
+      
+      if (token) {
+        // Logged-in user - fetch from backend
+        try {
+          const res = await axios.get(`${BASE_URL}/api/cart`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          
+          // Transform backend cart items to match expected format
+          const cartItems = res.data.items?.map(item => ({
+            _id: item.flower?._id,
+            name: item.flower?.name,
+            price: item.flower?.price || 0,
+            quantity: item.quantity,
+            image: item.flower?.image ? `${IMAGE_BASE_URL}/${item.flower.image}` : ''
+          })) || [];
+          
+          setCart(cartItems);
+        } catch (error) {
+          console.error("Error fetching cart:", error);
+          // Fallback to localStorage
+          const localCart = JSON.parse(localStorage.getItem("cart")) || [];
+          setCart(localCart);
+        }
+      } else {
+        // Guest user - use localStorage
+        const localCart = JSON.parse(localStorage.getItem("cart")) || [];
+        setCart(localCart);
+      }
+    };
+    
+    fetchCart();
   }, []);
 
   const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
@@ -43,7 +79,7 @@ const CheckoutForm = () => {
     if (!stripe || !elements) return;
 
     // 1. Create PaymentIntent on backend
-    const res = await fetch("http://localhost:5000/create-payment-intent", {
+    const res = await fetch(`${BASE_URL}/create-payment-intent`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ amount: total * 100 }),
