@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npm run build-admin && npm run build-backend",
     "build-admin": "cd admin && npm install && npm run build && mkdir -p ../backend/public && cp -r build/* ../backend/public",
-    "build-backend": "cd backend && npm install",
+    "build-backend": "cd backend && npm install && npm install stripe",
     "start": "cd backend && node server.js"
   }
 }
