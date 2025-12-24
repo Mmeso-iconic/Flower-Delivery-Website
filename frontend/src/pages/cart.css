@@ -1,0 +1,146 @@
+
+.cart-grid {
+  display: grid;
+  width: 100%;
+  min-height: 80vh; /* Ensures full height look */
+}
+
+/* Desktop: 2 Columns (50% / 50%) based on Figma visual */
+@media (min-width: 1024px) {
+  .cart-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------------------------
+   LEFT COLUMN: Items
+----------------------------*/
+.cart-items-section {
+  padding: var(--space-lg) var(--space-md);
+  /* Add right border to separate from summary on desktop */
+  border-bottom: 1px solid #121212; 
+}
+
+@media (min-width: 1024px) {
+  .cart-items-section {
+    border-right: 1px solid #121212;
+    border-bottom: none; /* Remove bottom border on desktop split */
+    padding: var(--space-xl) var(--space-lg);
+  }
+}
+
+.cart-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.cart-item-image img {
+  width: 100px; /* Fixed size from Figma */
+  height: 100px;
+  object-fit: cover;
+  display: block;
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.item-name {
+  font-family: 'Gilroy', sans-serif;
+  font-size: var(--font-sm);
+  font-weight: 500;
+  margin: 0 0 var(--space-xs) 0;
+  line-height: 1.2;
+}
+
+.item-qty {
+  font-family: 'Gilroy', sans-serif;
+  font-size: var(--font-xxs);
+  color: #121212;
+  margin: 0;
+}
+
+.cart-item-price {
+  font-family: 'Gilroy', sans-serif;
+  font-size: var(--font-sm);
+  font-weight: 500;
+}
+
+/* Simple text button for Clear Cart */
+.text-btn {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #121212;
+  padding: 0;
+  font-family: 'Gilroy', sans-serif;
+  font-size: var(--font-xxs);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: var(--space-md);
+}
+
+.empty-state {
+    padding: var(--space-lg) 0;
+    font-size: var(--font-sm);
+}
+
+/* ---------------------------
+   RIGHT COLUMN: Summary
+----------------------------*/
+.cart-summary-section {
+  padding: var(--space-lg) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers content vertically like Figma */
+}
+
+@media (min-width: 1024px) {
+  .cart-summary-section {
+    padding: var(--space-xl) var(--space-lg);
+  }
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+  font-family: 'Gilroy', sans-serif;
+  font-size: var(--font-xs);
+}
+
+.calculated-text {
+  color: #888; /* Muted color for shipping text */
+}
+
+.summary-divider {
+  height: 0; /* Figma didn't show a line, just space, but if you want a line: */
+  margin: var(--space-md) 0;
+}
+
+.summary-row.total {
+  margin-top: var(--space-xs);
+  font-weight: 600;
+  font-size: var(--font-sm);
+}
+
+/* Override/Extend the global .btn for full width here */
+.checkout-btn {
+  width: 100%; 
+  max-width: 100%; /* Override max-width from global .btn */
+  margin-top: var(--space-md);
+}
+
+.secure-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: var(--space-sm);
+  font-size: var(--font-xxxs);
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

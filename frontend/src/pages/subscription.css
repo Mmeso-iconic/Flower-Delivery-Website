@@ -1,0 +1,568 @@
+.subscription-herosection{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.subscription-herosection img {
+    width: 100%;      
+    height: auto;
+    object-fit: cover;
+}
+
+.subscription-herosectext{
+    border-top: #121212 1px solid;
+    border-bottom: #121212 1px solid;
+    padding: var(--space-lg) var(--space-sm);
+}
+
+.subscription-herosectext h2{
+    font-family: 'Gilroy';
+    font-weight: 600;
+    font-size: var(--font-xl);
+    line-height: 120%;
+    margin-top: 0;
+}
+
+.plan-details h6 {
+    font-family: 'Gilroy';
+    font-weight: 600;
+    font-size: var(--font-sm);
+    line-height: 100%;
+    margin-bottom: var(--space-ssm);
+}
+
+.plan-details li{
+    font-family: 'Gilroy';
+    font-weight: 400;
+    font-size: var(--font-sm);
+    line-height: 140%;
+}
+
+.subplan-button{
+    border: 1px solid #121212;
+    padding: 4.4vw 5.8vw ;
+    background-color: white;
+    width: 100%;
+   
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 400;
+    font-size: var(--font-xs);
+    line-height: 120%;
+}
+
+.how-itworks{
+    display: flex;
+    flex-direction: column;
+}
+
+.how-itworks h2{
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 120%;
+    border-bottom: 1px solid #121212;
+    padding: 40px 16px;
+}
+
+.how-itworks-step{
+    border-bottom: 1px solid #121212;
+    padding: var(--space-lg) var(--space-sm);
+}
+
+.how-itworkstitle{
+    font-family: 'Gilroy';
+    font-weight: 500;
+    font-size: var(--font-lg);
+    line-height: 120%;
+    margin: 0;
+}
+
+.how-itworkspara{
+    font-family: 'Gilroy';
+    font-weight: 400;
+    font-size: var(--font-xs);
+    line-height: 140%;
+}
+
+/*SELECT A PLAN SECTION*/
+.select-a-plan{
+    display: flex;
+    flex-direction: column;
+}
+
+.selectaplan-img{
+    border-bottom: #121212 1px solid;
+}
+
+.selectaplan-div{
+    border-bottom: #121212 1px solid;
+    padding: var(--space-lg) var(--space-sm);
+}
+
+.selectaplan-title{
+    font-family: 'Gilroy';
+    font-weight: 500;
+    font-size: var(--font-lg);
+    line-height: 120%;
+}
+
+.selectaplan-para{
+    font-family: 'Gilroy';
+    font-weight: 400;
+    font-size: var(--font-xs);
+    line-height: 140%;
+}
+
+
+.theplans {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: var(--space-sm);
+  width: 100%;
+}
+
+.plandiv {
+  flex: 1;
+  width: 100%;    /* stops it from getting too wide */
+  border: 1px solid #121212;
+  background-color: #fff;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plandiv:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.plan1{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.plan1-img {
+  width: 100%;
+  height: 220px;
+  border-bottom: 1px solid #121212;
+  overflow: hidden;
+}
+
+.plan1-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block; 
+}
+
+.plan1-details {
+  padding: var(--space-sm);
+  text-align: left;
+  width: 100%;
+}
+
+.plan-title {
+  font-family: 'Gilroy', sans-serif;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #121212;
+  font-size: var(--font-sm);
+  line-height: 140%;
+}
+
+.plan-list {
+  padding: var(--space-md) ;
+  margin: 0;
+  font-family: 'Gilroy', sans-serif;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.6;
+}
+
+.selectplan-button {
+  width: 100%;
+  background-color: #121212;
+  color: white;
+  border: none;
+  font-family: 'Gilroy', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: var(--font-xxs) 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.selectplan-button:hover {
+  background-color: #333;
+}
+
+.howoften-div{
+    border-top: #D2D2D2 1px solid;
+    font-family: 'Gilroy';
+    line-height: 120%;
+    margin-bottom: var(--space-lg);
+}
+
+.howoften-text{
+    font-family: 'Gilroy';
+    font-weight: 400;
+    font-size: var(--font-md);
+    line-height: 120%;
+}
+
+.howoften-para{
+    font-weight: 400;
+    font-size: var(--font-xs);
+    line-height: 140%;
+}
+
+.howoften-options{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.howoften-button{
+    border: 1px solid #121212;
+    padding: 4.4vw 5.8vw ;
+    background-color: white;
+    width: 100%;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 400;
+    font-size: var(--font-xs);
+    line-height: 120%;
+}
+
+.howmany-div{
+    border-top: #D2D2D2 1px solid;
+    border-bottom: #D2D2D7 1px solid;
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-lg);
+}
+
+.howmany-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #121212;
+    width: 100%;
+    max-width: 343px;
+}
+
+.qty-btn {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn1{
+    border-right: #121212 1px solid;
+}
+
+.btn2{
+    border-left: #121212 1px solid;    
+}
+
+.qty-btn:hover {
+    background: #f2f2f2;
+}
+
+.howmany-quantity input {
+    flex: 1; 
+    width: 225px;         /* wider on small screens */
+    text-align: center;
+    border: none;
+    outline: none;
+    font-size: var(--font-xs);
+}
+
+.subscription-faqs{
+    background-color: #F5F5F7;
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-lg);
+}
+
+
+.thefaqs{
+    border-top: #121212 1px solid;
+    border-bottom: #121212 1px solid;
+    background-color: white;
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+}
+
+.faqstitle{
+    font-family: 'Gilroy';
+    font-weight: 600;
+    font-size: var(--font-xl);
+    line-height: 120%;
+}
+
+.faq-item {
+  cursor: pointer;
+  padding: 10px 0;
+
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.faq-arrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.faqanswer {
+  margin-top: 8px;
+  font-family: 'Gilroy', sans-serif;
+  font-size: var(--font-xs);
+  color: #333;
+  line-height: 1.6;
+}
+
+hr {
+  margin: 10px 0;
+  border: 0.5px solid #12121272;
+}
+
+
+
+
+@media (min-width: 593px) {
+    .subscription-herosectext,
+    .how-itworks-step,
+    .selectaplan-div,
+    .howoften-div,
+    .howmany-div,
+    .subscription-faqs {
+        padding: var(--space-xl);
+    }
+
+    .how-itworks h2{
+         padding: var(--space-xl);
+    }
+
+
+
+    .subplan-button{ 
+            font-size: var(--font-sm);
+             padding: 3.5vw 5vw; 
+    }
+
+    .plandiv {
+        max-width: 500px;
+        min-width: 500px;
+  }
+
+  .howmany-quantity {
+    justify-content: flex-start; 
+    margin: 0;
+    max-width: 240px; 
+  }
+
+  .howmany-quantity input {
+    width: 150px;
+  }
+
+  .subscription-faqs{
+    background-color: #F5F5F7;
+    padding: var(--space-lg);
+}
+
+.thefaqs{
+    border-left: #121212 1px solid;
+    border-right: #121212 1px solid;
+}
+
+}
+
+@media (min-width: 1024px) {
+    .subscription-herosection {
+    flex-direction: row;
+  }
+
+  .how-itworks{
+      flex-direction: row;
+  }
+
+  .how-itworkstext{
+      flex: 1 50%;
+      border-right: #121212 1px solid;
+      margin: 0;
+  }
+
+    .how-itworksdiv{
+         flex: 1 50%;
+    }
+
+    .subscription-herosection {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+
+    .subscription-heroimg,
+    .subscription-herosectext {
+        flex: 0 0 50%;
+        width: 50%;
+    }
+
+    .subscription-heroimg {
+        border-right: 1px solid #121212;
+        border-bottom: 1px solid #121212;
+    }
+
+    .subscription-heroimg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .subscription-herosectext{
+        padding: 40px 16px;
+
+    }
+
+    .how-itworks-step,
+    .howmany-div,
+    .subscription-faqs{
+        padding: var(--space-xxl);
+    }
+
+     .subplan-button{ 
+            font-size: var(--font-sm);
+           padding: 2vw 4vw;
+    }
+
+    .howmany-quantity {
+          max-width: 180px;
+  }
+
+   .howmany-quantity input {
+           width: 90px;
+  }
+
+  .howoften-div,
+  .howmany-div {
+    margin-bottom: var(--space-md);
+    padding: 0;
+  }
+
+  .howmany-div{
+    padding-bottom: var(--space-md);
+  }
+
+/*select a plan */
+
+  .theplans {
+    flex-direction: column; /* keep them stacked */
+    align-items: center;
+  }
+
+  .plandiv {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .select-a-plan {
+    flex-direction: row-reverse;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .select-a-plan > .selectaplan-img,
+  .select-a-plan > .selectaplan-div {
+    flex: 0 0 50%;
+    width: 50%;
+  }
+
+  .selectaplan-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-right: 1px solid #121212;
+    border-bottom: 1px solid #121212;
+  }
+
+  .selectaplan-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    border-bottom: none;
+    border-right: #121212 1px solid;
+  }
+
+
+  .plan1 {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch; /* make both columns equal height */
+  width: 100%;
+  border-bottom: 1px solid #121212;
+   min-height: 320px;
+}
+
+.plan1-img,
+.plan1-details {
+  flex: 1;
+  width: 50%;
+  height: auto;
+}
+
+/* ensure image fills its side */
+.plan1-img {
+  border-right: 1px solid #121212;
+  overflow: hidden;
+  display: flex;
+  border-right: 1px solid #121212;
+  overflow: hidden;
+}
+
+.plan1-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* details section */
+.plan1-details {
+  padding-left: var(--space-md);
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+  .howoften-options{
+    display: flex;
+    flex-direction: row;
+  }
+
+
+.howoften-button{
+    padding: 1.2vw 3.6vw ;
+    font-size: var(--font-xxxs);
+}
+
+.subscription-faqs{
+  border-top: #121212 1px solid;
+}
+
+}
+    

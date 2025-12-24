@@ -1,0 +1,208 @@
+.aboutus-container{
+    width: 100%;
+  background-color: #fff;
+  overflow-x: hidden;
+  border-left: 1px #121212 solid;
+  border-right: 1px #121212 solid;
+}
+
+.aboutus-herosection{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.about-herosectext{
+    padding: var(--space-xxl) var(--space-sm);
+    font-family: 'Gilroy', sans-serif;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    border-bottom: #121212E5 1px solid;
+}
+
+.herotext{
+    font-weight: 600;
+    font-size: var(--font-xll);
+    line-height: 120%;
+}
+
+.herotext-caligraph{
+    font-family: 'Zapfino', cursive;
+    font-weight: 400;
+    font-size: var(--font-sm);
+    line-height: 100%;
+    padding-top: var(--space-md);
+}
+
+.herotext-para{
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    text-align: center;
+    color: #121212E5;
+}
+
+.hero{
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    text-align: center;
+    color: #121212E5;
+    font-style: italic;
+
+}
+
+.socialmedia-iconss{
+    justify-content: center;
+    display: flex;
+    flex-wrap: no-wrap;
+    gap: var(--space-md);
+    padding: var(--space-sm);
+    
+}
+
+.socialmedia-iconss img{
+    border-radius: 50px;
+    border: #121212E5 1px solid;
+    padding: var(--space-sm);
+}
+
+.about-herosecimage{
+    width: 100%;
+    height: auto;
+    display: flex;
+    border-bottom: #121212E5 1px solid;
+}
+
+.about-herosecimage img{
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+}
+
+/*STORY*/
+.about-story{
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-lg) var(--space-sm);
+    font-family: 'Gilroy', sans-serif;
+    border-bottom: #121212E5 1px solid;
+}
+
+.about-passion{
+    font-weight: 500;
+    font-style: Medium;
+    font-size: var(--font-lg);
+    line-height: 120%;
+}
+
+.about-passionstory{
+    font-weight: 400;
+    font-style: Regular;
+    font-size: var(--font-xs);
+    line-height: 140%;
+    text-align: center;
+}
+
+.our-attributes{
+    border-bottom: #121212E5 1px solid;
+}
+
+.attributes-imgdiv{
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.attributes-imgdiv img{
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+}
+.attributes-description{
+    padding: var(--space-lg) var(--space-sm);
+    text-align: left;
+    font-family: 'Gilroy', sans-serif;
+}
+
+.about-passions{
+    font-weight: 500;
+    font-style: Medium;
+    font-size: var(--font-lg);
+    line-height: 120%;
+}
+
+.about-passionstories{
+    font-weight: 400;
+    font-style: Regular;
+    font-size: var(--font-xs);
+    line-height: 140%;
+}
+
+.story{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+
+@media (min-width:593px) {
+    .about-herosectext,
+    .about-story,
+    .attributes-description {
+        padding: var(--space-xxl);
+    }
+}
+
+@media (min-width:1024px) {
+   .aboutus-herosection{
+        display: flex;
+        flex-direction: row;
+   }
+
+   .about-herosecimage{
+        aspect-ratio: 4 / 3;
+        display: flex;
+        border-bottom: #121212E5 1px solid;
+}
+
+    .about-herosecimage img{
+        width: 100%;
+        height: 100%;  
+        object-fit: cover;
+        height: auto;
+        border-left: #121212E5 1px solid;
+    }
+
+    .about-herosecimage, .about-herosectext{
+        flex: 1 1 50%;
+    }
+
+    .our-attributes{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .story{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .story >.attributes-imgdiv img{
+        border-left: #121212E5 1px solid;
+    }
+
+
+    .attributes-description, .attributes-imgdiv{
+        flex: 1 1 50%;
+    }
+
+    .attributes-description{
+        border-left: #121212E5 1px solid;
+    }
+
+ 
+}
